@@ -1,158 +1,57 @@
-### Welcome to your job at ACME Software
+# The Setting
+At the end of assignment each and everyone of you have contributed some code to a large body of software.  This next challenge will necessitate you working as a team.  Further more you will have to take an ambiguous project brief and solve problems for which there is more than one answer.  The starting code for this assignment is either the solution to assignment 1 that will be released on October 5, or any of your individual solutions.
 
-<img align="right" src="./media/acme.jpeg" width="400px" alt="picture"> 
+# The environment
+Each team will set up their own github repo and you will invite the two professors and the two TA to your repo as collaborators.   This way if you need assistance from us we can pull your code and examine it in an office hour.
 
-Welcome to ACME software.  We are happy to have you on board here at our start up.  
+# The task
+The product manager has asked that the following user stories be implemented because the client wants this.  The client wants to be able to use the calculator interface for simple spreadsheets to teach young students about the use of a spreadsheet without the complexity of using excel.  
 
-#### Onboarding
+Your target audience (the people who will use this) are children who are just learning about math and computing and the teacher wants to introduce the concept of the spreadsheet.  
 
-Your first assignment (should you choose to accept it) is to pick up a project that Bilbo Buggins was working on when they left the company.   They said they had some sort of important quest or something.  
+ 
 
-Anyhow.  What was Bilbo Buggins working on?
+## Part 0: Retro-Engineering Design Artefacts! (10 points)
+Wow, Bilbo really didn't leave *any* artefacts that give a high-level view of this code base!  Luckily you have been able to retro-engineer (or reverse engineerLinks to an external site.) a lot of them by carefully introducing breakpoints and effectively using debuggers on both the front-end and back-end.  Please capture your findings in diagrams and share them on our shared platform, NUSEng.liveLinks to an external site..  Use them in your stand-up meeting, and feel free to look at/comment on others!
 
-### The demonstratable Spreadsheet.
+ 
 
-We are building a spreadsheet that will be used by teachers in primary school and early high school to explain how a spreadhsheet works with a simple interface.   This will be the focus of your employment here at ACME Software.
+## Part 1: File Selection (10 points)
 
-#### The problem we have.
+Currently the document is selected by adding the document name to the URL on the client side.  The default behaviour is that if a document name is typed with a typo the server will create the new document.  In part 1 we want you to build a file selector page where you request a list of all the documents from the backend server and you display them on a separate page.  
 
-Bilbo was well on their way to getting the work done however they ended up with some code that kinda works.
+- What is done:   
+  Done is when you have a file selector page that you are happy with and it allows an easy way to access the files.  
+ 
 
+## Part 2: Update the Calculator to include more functionality. (10 points)
+This demo impressed the people who are funding the project.  The managers are impressed with how you recovered from Bilbo's sudden departure.  That being said they want you to make this spreadsheet a little more spiffy.  They want a look and feel that is accessible to junior high school students.  They also want additional functionality as detailed below.  
+In this part you will re-design the front end calculator, and you will update the FormulaEvaluator.ts to add the following functionality.
 
-Bilbo did a couple of things on their way out.  They deleted the core calculator in `FormulaEvaluator.ts`  
+- What is done:
+ Done is when you have tested your calculator using unit testing and human testing an you are satisfied that it is correct.
+ 
 
-They were also required to provide a message when the user was not logged in to the main page.  
+## Part 3: Show who is editing a cell (10 points)
+in order to facilitate the learning experience when students are all working together on a spreadsheet we would like to add a label to any cell that is currently locked and being used.  It would be nice to see the name of the user somehow attached to the cell that someone else is editing.  The current data that the server sends to the client does not include this information.   The information of who is editing cells within a spreadsheet is stored in the data available in the SpreadSheetController.ts class under the name cellsBeingEdited.   In order to solve this problem you will have to understand how the backend is sending data to the front end and you will have to make the required changes so that the data is available in the front end.  Once you do that you can then figure out how to display that data.
 
-They did do us a favour left us the unit tests for `FormulaEvaluator.ts` You can find these unit tests in `FormulaEvaluator.test.ts`.  But we are not completely sure that they did not add something there to confuse the people who are replacing them!  They didn't leave any official bug reports, and there doesn't appear to be history in the repository. 
+- What is done:
+Done is when you have demonstrated that you have solved the problem and you are proud of your solution.
+ 
 
-### Learning outcomes.
-The intention of this assignment is to start you in the world of working in existing code.  Typically when you join a team in a company you are starting to work with existing code.  The first task that most engineers are given is usually to fix a bug.  In this assignment we are having you fix a bug in the existing prototype.   The bug that you are fixing is that there is no indication given to the user when there is no user name in the input element on the page.  It sure would be nice to actually have a but report to work with, but there isn't one.  Before you fix this bug, create what you think a good bug report would look like for this issue.
+# The User interface and the new functions
+The product manager has told us that the current demo is cool, but the teachers want the full functionality of the iPhone calculator.
+The product manager has requested that the keypad have this functionality.  The functions that are needed to be added are the ones circled in red:
 
+ <image.png> image1 need to be upload
 
-The second task that most engineers get is to get up to speed on existing code.   We have fabricated the scenario here to provide you with the experience of having to understand a system, how the system is built, and how the system is deployed.   The calculator that you have inherited will return a number for each calculation (Bilbo had set this up to test the whole system.  When you are making changes to this existing system, do it through pull requests, so that you start to create a systematic communication mechanism with other people who are working on this code base!
+and
+ <image.png> image2 need to be upload
 
-The Third task that most engineers experience is to do a code review.  With this in mind we would like you to do a code review of one of the team mates in your team.   You should update the CodeReview.md file that is included in this repository.
+# The evaluation
+This is a team project and the expectation is that you drive the quality of this project.  In order to help you along the way we need to have the following:
 
-### How the current version works 
-short description here and demo in class.
-
-
-
-<table>
-    <theader>
-        <tr>
-            <th>
-            Item
-            </th>
-            <th>
-            Requirements
-            </th>
-            <th>
-            Rewards
-            </th>
-        </tr>
-    </theader>
-<tr>
-    <td>
-    Implement Calculation engine
-    </td>
-    <td>
-    Implement the calculation engine so that the basic calculator works (it passes the unit testsunit test pass. <br /> Also look out to see if there is a bad unit test
-    </td>
-    <td>
-    30
-    </td>
-</tr>
-<tr>
-    <td>
-    Implement login warning
-    </td>
-    <td>
-    If the user attempts to interact with the spreadsheet without entering a name they should get a pop up message
-    </td>
-    <td>
-    10
-    </td>
-</tr>
-<tr>
-    <td>
-    Code Review
-    </td>
-    <td>
-    You have reviewed the code of one of your team mates and have included your report in `CodeReview.md`
-    </td>
-    <td>
-    10
-    </td>
-</tr>
-
-</table>
-
-### Implementation strategy
-1. Crate the bug report and implement the missing login functionality
-1. Implement the calculator functionality first.  Get that working, and practice putting together meaningful pull requests for these changes. 
-1. Do the code review with your team mates, in particular if one of your team mates is struggling do a code review.<br/>
-     - If you are struggling, ask for a code review.
-1. Do the code review at any point (its better if you do it when the code is not finished)
-
-At the end of this  assignment you should be able to have separate tabs on your browser with different users using the same spread sheet.  Be ready to go over all of this work with your TA in your weekly standup!
-
-
-### How do you run this thing.
-
-The version of the spreadsheet that you have runs as two processes.   There is a backend server that does the calculation and there is a front end server that renders the spreadsheet and sends request for updates to the backend server.
-
-In order to start the backend server you can do run the DocumentServer.ts by issuing the command 
-
-```bash
-npm run start-server
-```
-
-at that poinn you should see some thing that looks like this run in that terminal.
-
-```bash
-~/C/s/calc-sheet ❯ npm run start-server
-Debugger attached.
-
-> calc-sheet@0.1.0 start-server
-> ts-node ./src/Server/DocumentServer.ts
-
-Debugger attached.
-test.json
-test1.json
-test2.json
-test32.json
-test5.json
-test999.json
-testd.json
-xxxtestDocument1.json
-xxxtestDocument2.json
-xxxtestDocument3.json
-listening on port 3005
-```
-
-Then in a second terminal you can run the command 
-
-```bash
-npm run start
-
-```
-
-This should start your frontend server and will start a tab in your current browser.  In that terminal you will see
-```bash
-Compiled successfully!
-
-You can now view calc-sheet in the browser.
-
-  Local:            http://localhost:3000
-  On Your Network:  http://10.18.195.99:3000
-
-Note that the development build is not optimized.
-To create a production build, use npm run build.
-
-webpack compiled successfully
-Files successfully emitted, waiting for typecheck results...
-Issues checking in progress...
-No issues found.
-    
-```
+- Discovery:  *link to Discovery.md*
+- Execution:  Your calc-sheet implementation delivers on the brief that you were handed.   
+- Team work documentation:   *link to TeamEvaluation.md*
+- Post-Mortem:  *link to PostMortem.md*

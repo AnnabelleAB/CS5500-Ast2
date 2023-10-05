@@ -60,6 +60,38 @@ Discovery: When a team undertakes a new task the first step in the process is of
 ### Part1
 
 ### Part2
+Goals:
+1. Based on the images provided and the assignment's requirements, provide a front-end update with new functionality.
+2. Update FormulaEvaluator.ts to incorporate new functionality as detailed in the assignment.
+3. Ensure comprehensive testing – both unit tests and human testing.
+4. Create documentation outlining team contributions and a post-mortem evaluation.
+
+Tasks & Strategies:
+1. Functionalities Needing Front-end Updates:
+Extended mathematical functions (e.g., sin, cos, tan, and their inverses)
+Additional spreadsheet-like functionalities
+Enhanced button designs for clarity and ease of use.
+Responsibility: [Yiyi Wang, Weiyi Gao]
+
+2. Update FormulaEvaluator.ts:
+Review Current Code: Understand existing functionality and identify areas for enhancement.
+Implement New Functions: Add new mathematical and spreadsheet functions.
+Integrate with UI: Ensure that the updated evaluator works with the redesigned front-end.
+Responsibility: [Yiyi Wang, Weiyi Gao]
+
+3. Testing:
+Unit Testing: Write unit tests for all new functions in FormulaEvaluator.ts.
+Human Testing: Conduct user testing sessions with a few junior high students to get feedback on usability and functionality.
+Responsibility: [Yiyi Wang, Weiyi Gao]
+
+4. Documentation:
+Update corresponding document with a detailed record.
+
+5. Feedback Loop: 
+Ensure continuous feedback during the design and development phases.
+
+6. Allocate Buffer Time: 
+Keep a few days reserved towards the end for unforeseen challenges.
 
 ### Part3
 In Part 3 of our project, we are tasked with enhancing the user experience by developing a feature that displays the name of the user editing a cell in real-time, ensuring seamless collaboration and interaction within our shared spreadsheet application.

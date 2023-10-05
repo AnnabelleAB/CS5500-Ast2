@@ -58,7 +58,27 @@ Discovery: When a team undertakes a new task the first step in the process is of
 ## How our team is going to address tackling the three sub-projects ( plan of out action.)
 
 ### Part1
+#### 1. **Create `FileSelector.js` Component:**
+   - **State Variable:** Introduce `documents` state to store the list of documents.
+   - **Fetching Function:** `fetchDocuments` to asynchronously fetch and set documents from the server on component mount.
+   - **Rendering:** Render list of documents with each document as a `Link` that routes to the respective document's page.
 
+#### 2. **Modify `App.js`:**
+   - **React Router Integration:** Implement React Router to facilitate navigation.
+   - **Routes Setup:** Define two routes - the root (`/`) rendering `FileSelector` and a dynamic route (`/:doc`) rendering `SpreadSheet`.
+
+
+#### Logical Flow:
+
+1. **`FileSelector.js` Initialization:**
+   - On component mount, `fetchDocuments()` is called.
+   - `fetchDocuments` sends a GET request to the server's `/documents` endpoint.
+   - Upon receiving the data, `setDocuments(data)` updates the `documents` state with the list of document names.
+
+2. **`App.js` Routing Setup:**
+   - With React Router, the application now has a routing mechanism.
+   - Root route (`/`) displays the `FileSelector` component.
+   - Dynamic route (`/:doc`) renders the `SpreadSheet` component with the respective document.
 ### Part2
 Goals:
 1. Based on the images provided and the assignment's requirements, provide a front-end update with new functionality on spreadsheet keypad.

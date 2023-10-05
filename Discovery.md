@@ -62,6 +62,15 @@ Discovery: When a team undertakes a new task the first step in the process is of
 ### Part2
 
 ### Part3
+In Part 3 of our project, we are tasked with enhancing the user experience by developing a feature that displays the name of the user editing a cell in real-time, ensuring seamless collaboration and interaction within our shared spreadsheet application.
+It involves several steps.
+1. Understanding the System: Review SpreadSheetController.ts and understand current data flow.
+2. Gap Analysis: Identify missing data needed to show who’s editing.
+3. Data Modification: Update backend to send editor's information to frontend.
+4. Frontend Update: Adjust frontend to receive and display editor’s info on the cell.
+5. Testing: Test new feature for functionality and user experience.
+6. Documentation: Document changes and update user instructions.
+7. Feedback & Iteration: Collect feedback and refine the feature.
 
 ### Part0 
 These sub-project aim to document and visualize the codebase's architecture, flows, and components. 

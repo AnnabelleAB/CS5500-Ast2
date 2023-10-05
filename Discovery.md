@@ -61,7 +61,7 @@ Discovery: When a team undertakes a new task the first step in the process is of
 
 ### Part2
 Goals:
-1. Based on the images provided and the assignment's requirements, provide a front-end update with new functionality.
+1. Based on the images provided and the assignment's requirements, provide a front-end update with new functionality on spreadsheet keypad.
 2. Update FormulaEvaluator.ts to incorporate new functionality as detailed in the assignment.
 3. Ensure comprehensive testing – both unit tests and human testing.
 4. Create documentation outlining team contributions and a post-mortem evaluation.
@@ -75,7 +75,21 @@ Responsibility: [Yiyi Wang, Weiyi Gao]
 
 2. Update FormulaEvaluator.ts:
 Review Current Code: Understand existing functionality and identify areas for enhancement.
-Implement New Functions: Add new mathematical and spreadsheet functions.
+Implement New Functions: Add new mathematical and spreadsheet functions. Required new functions include:
+    -negative sign
+    -square
+    -cube
+    -multiplicative inverse (1/x)
+    -square root
+    -cube root
+    -sin
+    -cos
+    -tan
+    -rand
+    -inverse sin
+    -inverse cos
+    -inverse tan
+Add New Error Messages: Figure out the error messages related to the new math functions and add them to global definitions.
 Integrate with UI: Ensure that the updated evaluator works with the redesigned front-end.
 Responsibility: [Yiyi Wang, Weiyi Gao]
 

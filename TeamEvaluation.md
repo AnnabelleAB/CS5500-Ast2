@@ -21,4 +21,5 @@ Team work documentation: Documentation of what each team member did. Their git c
 ### Yu Sun
 ### Yiyi Wang
 ### Annabelle Sun
+#### 10/05/2023 Write Discovery File and complete Part1 task
 ### Weiyi Gao

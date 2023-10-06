@@ -4,6 +4,7 @@ import Status from "./Status";
 import KeyPad from "./KeyPad";
 import SpreadSheetClient from "../Engine/SpreadSheetClient";
 import SheetHolder from "./SheetHolder";
+import { useNavigate } from 'react-router-dom';
 
 import { ButtonNames } from "../Engine/GlobalDefinitions";
 import ServerSelector from "./ServerSelector";
@@ -12,6 +13,9 @@ import ServerSelector from "./ServerSelector";
 interface SpreadSheetProps {
   documentName: string;
 }
+
+
+
 
 /**
  * the main component for the Spreadsheet.  It is the parent of all the other components
@@ -23,6 +27,7 @@ interface SpreadSheetProps {
 const spreadSheetClient = new SpreadSheetClient('test', 'juancho');
 
 function SpreadSheet({ documentName }: SpreadSheetProps) {
+  const navigate = useNavigate();
   const [formulaString, setFormulaString] = useState(spreadSheetClient.getFormulaString())
   const [resultString, setResultString] = useState(spreadSheetClient.getResultString())
   const [cells, setCells] = useState(spreadSheetClient.getSheetDisplayStringsForGUI());
@@ -187,6 +192,8 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
 
   return (
     <div>
+      <button onClick={() => navigate('/')}>Back</button>
+      <br />
       <Formula formulaString={formulaString} resultString={resultString}  ></Formula>
       <Status statusString={statusString}></Status>
       {<SheetHolder cellsValues={cells}

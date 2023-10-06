@@ -8,7 +8,7 @@ import SheetHolder from "./SheetHolder";
 import { ButtonNames } from "../Engine/GlobalDefinitions";
 import ServerSelector from "./ServerSelector";
 
-
+import "./SpreadSheet.css";
 interface SpreadSheetProps {
   documentName: string;
 }
@@ -186,7 +186,7 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
   }
 
   return (
-    <div>
+    <div className="main">
       <Formula formulaString={formulaString} resultString={resultString}  ></Formula>
       <Status statusString={statusString}></Status>
       {<SheetHolder cellsValues={cells}

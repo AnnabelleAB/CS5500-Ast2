@@ -127,7 +127,8 @@ export class FormulaEvaluator {
    *  
    */
   private term(): number {
-    let result = this.factor();
+    // let result = this.factor();
+    let result = this.advancedMathOperations();
     while (this._currentFormula.length > 0 && (this._currentFormula[0] === "*" || this._currentFormula[0] === "/")) {
       let operator = this._currentFormula.shift();
       let factor = this.factor();
@@ -147,6 +148,100 @@ export class FormulaEvaluator {
     }
     // set the lastResult to the result
     this._lastResult = result;
+    return result;
+  }
+
+  /**
+    * Handles advanced mathematical operations such as powers, roots, trigonometric functions, etc.
+    * 
+    * @returns The value after performing the advanced mathematical operation on the current factor.
+    */
+  private advancedMathOperations(): number {
+    let result = this.factor();
+    if (this._currentFormula.length > 0) {
+      let nextToken = this._currentFormula[0];
+      switch (nextToken) {
+        case "x^2":
+          this._currentFormula.shift();
+          result = Math.pow(result, 2);
+          break;
+        case "x^3":
+          this._currentFormula.shift();
+          result = Math.pow(result, 3);
+          break;
+        case "1/x":
+          if (result === 0) {
+            this._errorOccured = true;
+            this._errorMessage = ErrorMessages.divideByZero;
+            this._lastResult = Infinity;
+            return Infinity;
+          } else {
+            this._currentFormula.shift();
+            result = 1 / result;
+          }
+          break;
+        case "x^(1/2)":
+          if (result < 0) {
+            this._errorOccured = true;
+            this._errorMessage = ErrorMessages.negativeRoot;
+            this._lastResult = NaN;
+            return NaN;
+          } else {
+            this._currentFormula.shift();
+            result = Math.sqrt(result);
+          }
+          break;
+        case "x^(1/3)":
+          this._currentFormula.shift();
+          result = Math.cbrt(result);
+          break;
+        case "sin":
+          this._currentFormula.shift();
+          result = Math.sin(result);
+          break;
+        case "cos":
+          this._currentFormula.shift();
+          result = Math.cos(result);
+          break;
+        case "tan":
+          this._currentFormula.shift();
+          if (result === 90 || result === 270) {
+            this._errorOccured = true;
+            this._errorMessage = ErrorMessages.invalidNumber;
+            this._lastResult = NaN;
+            return this._lastResult;
+          } else {
+            result = Math.tan(result);
+          }
+          break;
+        case "sin^-1":
+          this._currentFormula.shift();
+          result = Math.asin(result);
+          break;
+        case "cos^-1":
+          this._currentFormula.shift();
+          result = Math.acos(result);
+          break;
+        case "tan^-1":
+          this._currentFormula.shift();
+          result = Math.atan(result);
+          break;
+        case "Rand":
+          this._currentFormula.shift();
+          result = Math.random();
+          break;
+        case "+/-":
+          this._currentFormula.shift();
+          if (result === 0) {
+            result = 0;
+          } else {
+            result = result * -1;
+          }
+          break;
+        default:
+          break;
+      } 
+    }
     return result;
   }
 

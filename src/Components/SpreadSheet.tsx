@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { ButtonNames } from "../Engine/GlobalDefinitions";
 import ServerSelector from "./ServerSelector";
 
-
+import "./SpreadSheet.css";
 interface SpreadSheetProps {
   documentName: string;
 }
@@ -191,7 +191,8 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
   }
 
   return (
-    <div>
+
+    <div className="main">
       <button onClick={() => navigate('/')}>Back</button>
       <br />
       <Formula formulaString={formulaString} resultString={resultString}  ></Formula>

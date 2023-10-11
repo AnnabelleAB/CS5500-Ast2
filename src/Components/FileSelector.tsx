@@ -7,6 +7,12 @@ const FileSelector: React.FC = () => {
     const serverPort = PortsGlobal.PortsGlobal.serverPort;
 
 
+    const linkStyle = {
+        margin: "1rem",
+        // textDecoration: "none",
+        color: 'rgb(214, 225, 156)'
+      };
+
     useEffect(() => {
         async function fetchDocuments() {
             try {
@@ -29,8 +35,8 @@ const FileSelector: React.FC = () => {
     return (
         <div>
             <h1>Select a Document</h1>
-            <ul>
-                {documents.map(doc => <li key={doc}><Link to={`/${doc}`}>{doc}</Link></li>)}
+            <ul className='link'>
+                {documents.map(doc => <li key={doc}><Link to={`/${doc}`} style={linkStyle}>{doc}</Link></li>)}
             </ul>
         </div>
     );

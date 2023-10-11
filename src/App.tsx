@@ -14,7 +14,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
+        <header className="App-main">
           <Routes>
             <Route path="/" element={<FileSelectorWrapper />} />
             <Route path="/:doc" element={<SpreadSheetWrapper />} />

@@ -1,3 +1,8 @@
 .main{
   text-align: center
 }
+.backbtn{
+  padding: 5px;
+  margin: 10px;
+  font-size: 15px;
+}

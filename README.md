@@ -1,9 +1,9 @@
-# This project was a assignment for CS5500 course, check the [AssignmentBrief.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/AssignmentBrief.md) to get more information
+ This project was a assignment for CS5500 course, check the [AssignmentBrief.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/AssignmentBrief.md) to get more information
 
-# [Discovery](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/Discovery.md)
-# [TeamEvaluation.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/TeamEvaluation.md)
-# [PostMortem.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/PostMortem.md)
-#
+ [Discovery](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/Discovery.md)
+ [TeamEvaluation.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/TeamEvaluation.md)
+ [PostMortem.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/PostMortem.md)
+ [Part0]()link to image or lucichart
 
 # Getting Started with Create React App
 

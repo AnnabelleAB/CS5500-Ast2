@@ -205,7 +205,7 @@ export class FormulaEvaluator {
           break;
         case "tan":
           this._currentFormula.shift();
-          if (result === 90 || result === 270) {
+          if (Math.abs(result) === 90 || Math.abs(result) === 270) {
             this._errorOccured = true;
             this._errorMessage = ErrorMessages.invalidNumber;
             this._lastResult = NaN;
@@ -216,10 +216,22 @@ export class FormulaEvaluator {
           break;
         case "sin^-1":
           this._currentFormula.shift();
+          if (result < -1 || result > 1) {
+            this._errorOccured = true;
+            this._errorMessage = ErrorMessages.outOfRange;
+            this._lastResult = NaN;
+            return this._lastResult;
+          }
           result = Math.asin(result);
           break;
         case "cos^-1":
           this._currentFormula.shift();
+          if (result < -1 || result > 1) {
+            this._errorOccured = true;
+            this._errorMessage = ErrorMessages.outOfRange;
+            this._lastResult = NaN;
+            return this._lastResult;
+          }
           result = Math.acos(result);
           break;
         case "tan^-1":

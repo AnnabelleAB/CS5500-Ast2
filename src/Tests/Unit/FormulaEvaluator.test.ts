@@ -685,6 +685,45 @@ describe("FormulaEvaluator", () => {
         let error = recalc.error;
 
         expect(result).toEqual(NaN);
+        expect(error).toEqual(ErrorMessages.outOfRange);
+      });
+    });     
+
+    describe("when the formula is cos^(-1)(2)", () => {
+      it("returns the number", () => {
+        const formula = ["2", "cos^-1"];
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(NaN);
+        expect(error).toEqual(ErrorMessages.outOfRange);
+      });
+    });     
+
+    describe("when the formula is cos^(-1)(0) * 10", () => {
+      it("returns the number", () => {
+        const formula = ["0", "cos^-1", "*", "10"];
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(Math.acos(0) * 10);
+        expect(error).toEqual("");
+      });
+    });     
+
+    describe("when the formula is (tan^(-1)(1) - 5) / 2", () => {
+      it("returns the number", () => {
+        const formula = ["(", "1", "tan^-1", "-", "5", ")", "/", "2"];
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual((Math.atan(1) - 5) / 2);
         expect(error).toEqual("");
       });
     });     
@@ -711,6 +750,19 @@ describe("FormulaEvaluator", () => {
         let error = recalc.error;
 
         expect(result).toEqual(0);
+        expect(error).toEqual("");
+      });
+    });     
+
+    describe("when the formula is +/- -3 + 3", () => {
+      it("returns the number", () => {
+        const formula = ["-3", "+/-", "+", "3"];
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(6);
         expect(error).toEqual("");
       });
     });     

@@ -9,6 +9,7 @@ export const ErrorMessages = {
   missingParentheses: "#ERR",
   emptyFormula: "#EMPTY!", // this is not an error message but we use it to indicate that the cell is empty
   negativeRoot: "#ERR",
+  outOfRange: "#ERR",
 
 }
 

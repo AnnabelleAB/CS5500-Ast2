@@ -25,4 +25,4 @@ Team work documentation: Documentation of what each team member did. Their git c
 2. 09/29/2023 Start Working on Part0 
 3. 10/04/2023 write Discovery file for part0
 4. 10/05/2023 add a little UI style for part1 select file 
-4. 10/12/2023 finish part0, write some unit tests for formulaevaluator
+4. 10/12/2023 finish part0, modify layout of page

@@ -72,8 +72,9 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
     return (
       <div>
         <input
+          className="userinput"
           type="text"
-          placeholder="User name"
+          placeholder="Please enter a user name"
           defaultValue={userName}
           onChange={(event) => {
             // get the text from the input
@@ -199,6 +200,7 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
         <button className="backbtn" onClick={() => navigate("/")}>
           Back to File List
         </button>
+        {getUserLogin()}
         <Formula
           formulaString={formulaString}
           resultString={resultString}
@@ -217,7 +219,7 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
           onCommandButtonClick={onCommandButtonClick}
           currentlyEditing={currentlyEditing}
         ></KeyPad>
-        {getUserLogin()}
+
         <ServerSelector
           serverSelector={serverSelector}
           serverSelected={serverSelected}

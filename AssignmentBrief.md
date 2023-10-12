@@ -13,7 +13,7 @@ Your target audience (the people who will use this) are children who are just le
 
 ## Part 0: Retro-Engineering Design Artefacts! (10 points)
 Wow, Bilbo really didn't leave *any* artefacts that give a high-level view of this code base!  Luckily you have been able to retro-engineer (or reverse engineerLinks to an external site.) a lot of them by carefully introducing breakpoints and effectively using debuggers on both the front-end and back-end.  Please capture your findings in diagrams and share them on our shared platform, NUSEng.liveLinks to an external site..  Use them in your stand-up meeting, and feel free to look at/comment on others!
-
+ - [Part0]()link to image or lucichart
  
 
 ## Part 1: File Selection (10 points)

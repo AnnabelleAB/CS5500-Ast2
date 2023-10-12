@@ -28,7 +28,7 @@ function ServerSelector({ serverSelector, serverSelected }: ServerSelectorProps)
     const serverStyle = {
         margin: "1rem",
         color:'white',
-        
+        fontSize:'16px',     
       };
 
 

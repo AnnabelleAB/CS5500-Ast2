@@ -85,6 +85,9 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
             spreadSheetClient.userName = userName;
           }}
         />
+        <button className="backbtn" onClick={() => navigate("/")}>
+          Back to File List
+        </button>
       </div>
     );
   }
@@ -197,9 +200,6 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
   return (
     <>
       <div className="main">
-        <button className="backbtn" onClick={() => navigate("/")}>
-          Back to File List
-        </button>
         {getUserLogin()}
         <Formula
           formulaString={formulaString}

@@ -351,6 +351,19 @@ describe("FormulaEvaluator", () => {
       });
     });
 
+    describe("when the formula is 1 + 2^2", () => {
+      it("returns the number", () => {
+        const formula = ["1", "+", "2", "x^2"];
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(5);
+        expect(error).toEqual("");
+      });
+    });
+
     describe("when the formula is -1^2", () => {
       it("returns the number", () => {
         const formula = ["-1", "x^2"];
@@ -480,6 +493,21 @@ describe("FormulaEvaluator", () => {
         expect(error).toEqual("");
       });
     });
+
+    describe("when the formula is 1 + 4^(1/2)", () => {
+      it("returns the number", () => {
+        const formula = ["1", "+", "4", "x^(1/2)"];
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(3);
+        expect(error).toEqual("");
+      });
+    });
+
+
 
     describe("when the formula is -4^(1/2)", () => {
       it("returns the number", () => {
@@ -741,7 +769,7 @@ describe("FormulaEvaluator", () => {
       });
     });     
 
-    describe("when the formula is +/- 0", () => {
+    describe("when the formula is 0 +/-", () => {
       it("returns the number", () => {
         const formula = ["0", "+/-"];
         recalc.evaluate(formula);
@@ -754,7 +782,7 @@ describe("FormulaEvaluator", () => {
       });
     });     
 
-    describe("when the formula is +/- -3 + 3", () => {
+    describe("when the formula is -3 +/- + 3", () => {
       it("returns the number", () => {
         const formula = ["-3", "+/-", "+", "3"];
         recalc.evaluate(formula);
@@ -767,5 +795,90 @@ describe("FormulaEvaluator", () => {
       });
     });     
 
+    describe("when the formula is 3.14159265358979323 cos'", () => {
+      it("returns the numbe 0", () => {
+        const formula = ["3.14159265358979323", "cos"];
+
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(-1);
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is 3.14159265358979323 sin'", () => {
+      it("returns the numbe 0", () => {
+        const formula = ["3.14159265358979323", "sin"];
+
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(Math.abs(result)).toBeLessThan(0.000000000000001);
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is (3.14159265358979323 / 4) tan'", () => {
+      it("returns the numbe 0", () => {
+        const formula = ["(", "3.14159265358979323", "/", "4", ")", "tan"];
+
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+        let delta = Math.abs(result - 1);
+        expect(delta).toBeLessThan(0.000000000000001);
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is 1 sin^-1'", () => {
+      it("returns the number PI/2", () => {
+        const formula = ["1", "sin^-1"];
+
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(1.5707963267948966);
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is 1 cos^-1'", () => {
+      it("returns the numbe 0", () => {
+        const formula = ["1", "cos^-1"];
+
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(0);
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is 1 tan^-1'", () => {
+      it("returns the number PI/4", () => {
+        const formula = ["1", "tan^-1"];
+
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(0.7853981633974483);
+        expect(error).toEqual("");
+      });
+    });
+
+    
   });
 });

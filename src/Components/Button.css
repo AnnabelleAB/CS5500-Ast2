@@ -11,6 +11,12 @@
   height: 60px;
 }
 
+.button-number:active {
+  background-color: #4c47a9;
+  box-shadow: 0 1px #000000;
+  transform: translateY(0.1px);
+}
+
 .button-operator {
   background-color: #512426;
   border: 5px solid #000000;
@@ -22,6 +28,12 @@
   font-size: large;
   width: 80px;
   height: 60px;
+}
+
+.button-operator:active {
+  background-color: #481d1f;
+  box-shadow: 0 2px #000000;
+  transform: translateY(0.1px);
 }
 
 .button-edit-end {
@@ -37,6 +49,12 @@
   height: 60px;
 }
 
+.button-edit-end:active {
+  background-color: #666464;
+  box-shadow: 0 2px #222222;
+  transform: translateY(0.1px);
+}
+
 .button-edit-start {
   background-color: #707070;
   border: 5px solid #000000;
@@ -50,6 +68,12 @@
   height: 60px;
 }
 
+.button-edit-start:active {
+  background-color: #666464;
+  box-shadow: 0 2px #222222;
+  transform: translateY(0.1px);
+}
+
 .button-control {
   background-color: #000000;
   border: 5px solid #000000;
@@ -59,7 +83,12 @@
   text-decoration: none;
   display: inline-block;
   font-size: large;
-
   width: 80px;
   height: 60px;
+}
+
+.button-control:active {
+  background-color: #050505;
+  box-shadow: 0 2px #0f0e0e;
+  transform: translateY(0.5px);
 }

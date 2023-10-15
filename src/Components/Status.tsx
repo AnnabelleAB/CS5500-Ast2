@@ -13,7 +13,7 @@ interface StatusProps {
 const Status: React.FC<StatusProps> = ({ statusString }) => {
   return (
     <div className="status">
-      <span data-testid="StatusComponent" style={{color:'orange'}}>{statusString}</span>
+      <span data-testid="StatusComponent" style={{color:'orange', fontSize:'20px'}}>{statusString}</span>
     </div>
   );
 }

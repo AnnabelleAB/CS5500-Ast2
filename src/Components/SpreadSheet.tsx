@@ -4,39 +4,50 @@ import Status from "./Status";
 import KeyPad from "./KeyPad";
 import SpreadSheetClient from "../Engine/SpreadSheetClient";
 import SheetHolder from "./SheetHolder";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import { ButtonNames } from "../Engine/GlobalDefinitions";
 import ServerSelector from "./ServerSelector";
 
 import "./SpreadSheet.css";
+import Header from "./Header";
 interface SpreadSheetProps {
   documentName: string;
 }
 
-
-
-
 /**
  * the main component for the Spreadsheet.  It is the parent of all the other components
- * 
+ *
  *
  * */
 
 // create the client that talks to the backend.
-const spreadSheetClient = new SpreadSheetClient('test', 'juancho');
+const spreadSheetClient = new SpreadSheetClient("test", "juancho");
 
 function SpreadSheet({ documentName }: SpreadSheetProps) {
   const navigate = useNavigate();
-  const [formulaString, setFormulaString] = useState(spreadSheetClient.getFormulaString())
-  const [resultString, setResultString] = useState(spreadSheetClient.getResultString())
-  const [cells, setCells] = useState(spreadSheetClient.getSheetDisplayStringsForGUI());
-  const [statusString, setStatusString] = useState(spreadSheetClient.getEditStatusString());
-  const [currentCell, setCurrentCell] = useState(spreadSheetClient.getWorkingCellLabel());
-  const [currentlyEditing, setCurrentlyEditing] = useState(spreadSheetClient.getEditStatus());
-  const [userName, setUserName] = useState(window.sessionStorage.getItem('userName') || "");
+  const [formulaString, setFormulaString] = useState(
+    spreadSheetClient.getFormulaString()
+  );
+  const [resultString, setResultString] = useState(
+    spreadSheetClient.getResultString()
+  );
+  const [cells, setCells] = useState(
+    spreadSheetClient.getSheetDisplayStringsForGUI()
+  );
+  const [statusString, setStatusString] = useState(
+    spreadSheetClient.getEditStatusString()
+  );
+  const [currentCell, setCurrentCell] = useState(
+    spreadSheetClient.getWorkingCellLabel()
+  );
+  const [currentlyEditing, setCurrentlyEditing] = useState(
+    spreadSheetClient.getEditStatus()
+  );
+  const [userName, setUserName] = useState(
+    window.sessionStorage.getItem("userName") || ""
+  );
   const [serverSelected, setServerSelected] = useState("localhost");
-
 
   function updateDisplayValues(): void {
     spreadSheetClient.userName = userName;
@@ -57,23 +68,28 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
     return () => clearInterval(interval);
   });
 
-
   function getUserLogin() {
-    return <div>
-      <input
-        type="text"
-        placeholder="User name"
-        defaultValue={userName}
-        onChange={(event) => {
-          // get the text from the input
-          let userName = event.target.value;
-          window.sessionStorage.setItem('userName', userName);
-          // set the user name
-          setUserName(userName);
-          spreadSheetClient.userName = userName;
-        }} />
-    </div>
-
+    return (
+      <div>
+        <input
+          className="userinput"
+          type="text"
+          placeholder="Please enter a user name"
+          defaultValue={userName}
+          onChange={(event) => {
+            // get the text from the input
+            let userName = event.target.value;
+            window.sessionStorage.setItem("userName", userName);
+            // set the user name
+            setUserName(userName);
+            spreadSheetClient.userName = userName;
+          }}
+        />
+        <button className="backbtn" onClick={() => navigate("/")}>
+          Back to File List
+        </button>
+      </div>
+    );
   }
 
   function checkUserName(): boolean {
@@ -85,26 +101,23 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
   }
 
   /**
-   * 
-   * @param event 
-   * 
+   *
+   * @param event
+   *
    * This function is the call back for the command buttons
-   * 
+   *
    * It will call the machine to process the command button
-   * 
+   *
    * the buttons done, edit, clear, all clear, and restart do not require asynchronous processing
-   * 
+   *
    * the other buttons do require asynchronous processing and so the function is marked async
    */
   async function onCommandButtonClick(text: string): Promise<void> {
-
     if (!checkUserName()) {
       return;
     }
 
     switch (text) {
-
-
       case ButtonNames.edit_toggle:
         if (currentlyEditing) {
           spreadSheetClient.setEditStatus(false);
@@ -121,7 +134,6 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
       case ButtonNames.allClear:
         spreadSheetClient.clearFormula();
         break;
-
     }
     // update the display values
     updateDisplayValues();
@@ -129,11 +141,11 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
 
   /**
    *  This function is the call back for the number buttons and the Parenthesis buttons
-   * 
+   *
    * They all automatically start the editing of the current formula.
-   * 
+   *
    * @param event
-   * 
+   *
    * */
   function onButtonClick(event: React.MouseEvent<HTMLButtonElement>): void {
     if (!checkUserName()) {
@@ -145,7 +157,6 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
     spreadSheetClient.addToken(trueText);
 
     updateDisplayValues();
-
   }
 
   // this is to help with development,  it allows us to select the server
@@ -154,17 +165,15 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
     spreadSheetClient.setServerSelector(buttonName);
   }
 
-
   /**
-   * 
-   * @param event 
-   * 
+   *
+   * @param event
+   *
    * This function is called when a cell is clicked
    * If the edit status is true then it will send the token to the machine.
    * If the edit status is false then it will ask the machine to update the current formula.
    */
   function onCellClick(event: React.MouseEvent<HTMLButtonElement>): void {
-
     if (userName === "") {
       alert("Please enter a user name");
       return;
@@ -175,10 +184,9 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
     const editStatus = spreadSheetClient.getEditStatus();
     let realCellLabel = cellLabel ? cellLabel : "";
 
-
     // if the edit status is true then add the token to the machine
     if (editStatus) {
-      spreadSheetClient.addCell(realCellLabel);  // this will never be ""
+      spreadSheetClient.addCell(realCellLabel); // this will never be ""
       updateDisplayValues();
     }
     // if the edit status is false then set the current cell to the clicked on cell
@@ -187,27 +195,38 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
 
       updateDisplayValues();
     }
-
   }
 
   return (
+    <>
+      <div className="main">
+        {getUserLogin()}
+        <Formula
+          formulaString={formulaString}
+          resultString={resultString}
+        ></Formula>
+        <Status statusString={statusString}></Status>
+        {
+          <SheetHolder
+            cellsValues={cells}
+            onClick={onCellClick}
+            currentCell={currentCell}
+            currentlyEditing={currentlyEditing}
+          ></SheetHolder>
+        }
+        <KeyPad
+          onButtonClick={onButtonClick}
+          onCommandButtonClick={onCommandButtonClick}
+          currentlyEditing={currentlyEditing}
+        ></KeyPad>
 
-    <div className="main">
-      <button onClick={() => navigate('/')}>Back</button>
-      <br />
-      <Formula formulaString={formulaString} resultString={resultString}  ></Formula>
-      <Status statusString={statusString}></Status>
-      {<SheetHolder cellsValues={cells}
-        onClick={onCellClick}
-        currentCell={currentCell}
-        currentlyEditing={currentlyEditing} ></SheetHolder>}
-      <KeyPad onButtonClick={onButtonClick}
-        onCommandButtonClick={onCommandButtonClick}
-        currentlyEditing={currentlyEditing}></KeyPad>
-      {getUserLogin()}
-      <ServerSelector serverSelector={serverSelector} serverSelected={serverSelected} />
-    </div>
-  )
-};
+        <ServerSelector
+          serverSelector={serverSelector}
+          serverSelected={serverSelected}
+        />
+      </div>
+    </>
+  );
+}
 
 export default SpreadSheet;

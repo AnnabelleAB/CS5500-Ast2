@@ -147,3 +147,5 @@ These sub-project aim to document and visualize the codebase's architecture, flo
 4. Begin drafting the architecture diagram based on the collected data. Use visualization tools Lucidchart.
 5. Share the initial draft with team members for feedback and suggestions. Ensure that the diagram accurately reflects the codebase's structure and logic.
 6. Accompany the diagram with documentation that explains key components, their responsibilities, and how they interact with each other.
+
+ - [Part0]()link to image or lucichart

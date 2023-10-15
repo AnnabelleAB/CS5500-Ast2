@@ -25,9 +25,15 @@ function ServerSelector({ serverSelector, serverSelected }: ServerSelectorProps)
         serverSelector(buttonName);
     } // onButtonClick
 
+    const serverStyle = {
+        margin: "1rem",
+        color:'white',
+        fontSize:'16px',     
+      };
+
 
     return (
-        <div>
+        <div style={serverStyle}>
             <button onClick={onButtonClick}>localhost</button>
             <button onClick={onButtonClick}>renderhost</button>
             current server: {serverSelected}

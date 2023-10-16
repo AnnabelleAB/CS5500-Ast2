@@ -21,7 +21,10 @@ export const ButtonNames = {
   clear: "C",
   negative: "+/-",
   random: "Rand",
-  
+  sqrt: "\u{221A}",
+  cuberoot: "\u{221B}",
+  sqr: "x" + "\u{00B2}",
+  cube:"x"+"\u{00B3}",
 }
 
 

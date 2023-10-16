@@ -153,6 +153,16 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
     }
     const text = event.currentTarget.textContent;
     let trueText = text ? text : "";
+    if (text === ButtonNames.sqr) {
+      trueText = "sqr";
+    } else if (text === ButtonNames.cube) {
+      trueText = "cube";
+    } else if (text === ButtonNames.cuberoot) {
+      trueText = "cuberoot";
+    } else if (text === ButtonNames.sqrt) {
+      trueText = "sqrt";
+    }
+    
     spreadSheetClient.setEditStatus(true);
     spreadSheetClient.addToken(trueText);
 

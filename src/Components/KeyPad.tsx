@@ -49,7 +49,7 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           dataTestId="asin-button"
         />
         <Button
-          text="sqr"
+          text={ ButtonNames.sqr}
           isDigit={false}
           onClick={onButtonClick}
           className="button-operator"
@@ -115,7 +115,7 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           dataTestId="acos-button"
         />
         <Button
-          text="sqrt"
+          text={ ButtonNames.sqrt}
           isDigit={false}
           onClick={onButtonClick}
           className="button-operator"
@@ -174,7 +174,7 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           dataTestId="atan-button"
         />
         <Button
-          text="cube"
+          text={ ButtonNames.cube}
           isDigit={false}
           onClick={onButtonClick}
           className="button-operator"
@@ -233,7 +233,7 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           dataTestId="1/x-button"
         />
         <Button
-          text="cuberoot"
+          text={ButtonNames.cuberoot}
           isDigit={false}
           onClick={onButtonClick}
           className="button-operator"

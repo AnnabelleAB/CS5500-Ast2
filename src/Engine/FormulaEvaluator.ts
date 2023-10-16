@@ -12,7 +12,7 @@ export class FormulaEvaluator {
   private _lastResult: number = 0;
   private _sheetMemory: SheetMemory;
   private _result: number = 0;
-
+  
 
   constructor(memory: SheetMemory) {
     this._sheetMemory = memory;
@@ -158,8 +158,9 @@ export class FormulaEvaluator {
     */
   private advancedMathOperations(): number {
     let result = this.factor();
-    if (this._currentFormula.length > 0) {
+    while (this._currentFormula.length > 0) {
       let nextToken = this._currentFormula[0];
+      let operationHandled = true;
       switch (nextToken) {
         case "sqr":
           this._currentFormula.shift();
@@ -251,8 +252,10 @@ export class FormulaEvaluator {
           }
           break;
         default:
+          operationHandled = false;
           break;
       } 
+      if (!operationHandled) break;
     }
     return result;
   }
@@ -276,6 +279,11 @@ export class FormulaEvaluator {
     // get the first token in the formula
     let token = this._currentFormula.shift();
 
+    if (token === "Rand") {
+      this._currentFormula.unshift(token);
+      return result;
+    }
+    
     // if the token is a number set the result to the number
     // and set the lastResult to the number
     if (this.isNumber(token)) {
@@ -300,8 +308,7 @@ export class FormulaEvaluator {
         this._errorOccured = true;
         this._lastResult = result;
       }
-
-      // otherwise set the errorOccured flag to true  
+    // otherwise set the errorOccured flag to true  
     } else {
       this._errorOccured = true;
       this._errorMessage = ErrorMessages.invalidFormula;

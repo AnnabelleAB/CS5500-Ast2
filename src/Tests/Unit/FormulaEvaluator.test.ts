@@ -663,7 +663,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(Math.tan(0) + 1);
         expect(error).toEqual("");
       });
-    });    
+    });
 
     describe("when the formula is (tan(0) * 3) + 2", () => {
       it("returns the number", () => {
@@ -676,7 +676,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual((Math.tan(0) * 3) + 2);
         expect(error).toEqual("");
       });
-    });    
+    });
 
     describe("when the formula is tan(90)", () => {
       it("returns the number", () => {
@@ -689,7 +689,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(NaN);
         expect(error).toEqual(ErrorMessages.invalidNumber);
       });
-    });    
+    });
 
     describe("when the formula is sin^(-1)(0)", () => {
       it("returns the number", () => {
@@ -702,7 +702,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(0);
         expect(error).toEqual("");
       });
-    });     
+    });
 
     describe("when the formula is sin^(-1)(2)", () => {
       it("returns the number", () => {
@@ -715,7 +715,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(NaN);
         expect(error).toEqual(ErrorMessages.outOfRange);
       });
-    });     
+    });
 
     describe("when the formula is cos^(-1)(2)", () => {
       it("returns the number", () => {
@@ -728,7 +728,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(NaN);
         expect(error).toEqual(ErrorMessages.outOfRange);
       });
-    });     
+    });
 
     describe("when the formula is cos^(-1)(0) * 10", () => {
       it("returns the number", () => {
@@ -741,7 +741,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(Math.acos(0) * 10);
         expect(error).toEqual("");
       });
-    });     
+    });
 
     describe("when the formula is (tan^(-1)(1) - 5) / 2", () => {
       it("returns the number", () => {
@@ -754,7 +754,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual((Math.atan(1) - 5) / 2);
         expect(error).toEqual("");
       });
-    });     
+    });
 
     describe("when the formula is +/- 3", () => {
       it("returns the number", () => {
@@ -767,7 +767,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(-3);
         expect(error).toEqual("");
       });
-    });     
+    });
 
     describe("when the formula is 0 +/-", () => {
       it("returns the number", () => {
@@ -780,7 +780,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(0);
         expect(error).toEqual("");
       });
-    });     
+    });
 
     describe("when the formula is -3 +/- + 3", () => {
       it("returns the number", () => {
@@ -793,7 +793,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(6);
         expect(error).toEqual("");
       });
-    });     
+    });
 
     describe("when the formula is 3.14159265358979323 cos'", () => {
       it("returns the numbe 0", () => {
@@ -879,6 +879,90 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    
+    describe("when the formula is '2 Rand'", () => {
+      it("returns a random number between 0 and 1 (inclusive)", () => {
+        const formula = ["Rand"];
+        recalc.evaluate(formula);
+
+        const result = recalc.result;
+        const error = recalc.error;
+
+        expect(result).toBeGreaterThanOrEqual(0);
+        expect(result).toBeLessThanOrEqual(1);
+
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is 'Rand'", () => {
+      it("returns a random number between 0 and 1 (inclusive)", () => {
+        const formula = ["Rand"];
+        recalc.evaluate(formula);
+
+        const result = recalc.result;
+        const error = recalc.error;
+
+        expect(result).toBeGreaterThanOrEqual(0);
+        expect(result).toBeLessThanOrEqual(1);
+
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is '1 Rand + 5'", () => {
+      it("returns a random number between 0 and 1 (inclusive)", () => {
+        const formula = ["Rand"];
+        recalc.evaluate(formula);
+
+        const result = recalc.result;
+        const error = recalc.error;
+
+        expect(result).toBeGreaterThanOrEqual(0);
+        expect(result).toBeLessThanOrEqual(6);
+
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is 2 1/x sqr 1/x'", () => {
+
+      it("returns the number 0.25", () => {
+
+        const formula = ["2", "1/x", "x^2", "1/x"];
+
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+
+        let error = recalc.error;
+
+        expect(result).toEqual(4);
+
+        expect(error).toEqual("");
+
+      });
+
+    });
+
+    describe("when the formula is ( 1 + 1 ) x^2 x^2 x^2'", () => {
+
+      it("returns the number 0.25", () => {
+
+        const formula = ["(", "1", "+", "1", ")", "x^2", "x^2", "x^2"];
+
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+
+        let error = recalc.error;
+
+        expect(result).toEqual(256);
+
+        expect(error).toEqual("");
+
+      });
+
+    });
+
   });
 });

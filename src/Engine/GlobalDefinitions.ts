@@ -24,7 +24,8 @@ export const ButtonNames = {
   sqrt: "\u{221A}",
   cuberoot: "\u{221B}",
   sqr: "x" + "\u{00B2}",
-  cube:"x"+"\u{00B3}",
+  cube: "x" + "\u{00B3}",
+  empty: "\u{00A0}"
 }
 
 

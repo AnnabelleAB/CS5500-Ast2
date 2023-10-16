@@ -142,6 +142,7 @@ export class DocumentHolder {
         // get the json string for the controler
         const documentContainer = document!.documentContainer(userName);
         // convert to JSON
+        // console.log("documentContainer",documentContainer)//Not Empty for now
         const documentJSON = JSON.stringify(documentContainer);
         return documentJSON;
 

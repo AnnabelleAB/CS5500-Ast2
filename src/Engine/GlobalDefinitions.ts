@@ -39,5 +39,6 @@ export interface DocumentTransport {
   result: string;
   currentCell: string;
   isEditing: boolean;
+  cellsBeingEdited: Map<string, string>;
 }
 

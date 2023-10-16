@@ -52,6 +52,7 @@ class SpreadSheetClient {
             currentCell: 'A1',
             isEditing: false,
             cells: new Map<string, CellTransport>(),
+            cellsBeingEdited: new Map<string, string>(),
         };
         for (let row = 0; row < document.rows; row++) {
             for (let column = 0; column < document.columns; column++) {
@@ -352,6 +353,7 @@ class SpreadSheetClient {
             .then(response => {
                 return response.json() as Promise<DocumentTransport>;
             }).then((document: DocumentTransport) => {
+                console.log("document", document)//No cells being edited, why?
                 this._updateDocument(document);
 
             });
@@ -366,14 +368,14 @@ class SpreadSheetClient {
         const columns = document.columns;
         const rows = document.rows;
         const isEditing = document.isEditing;
-
+        const cellsBeingEdited = document.cellsBeingEdited;
 
 
         // create the document
         this._document = {
             formula: formula,
             result: result,
-
+            cellsBeingEdited: cellsBeingEdited,
             currentCell: currentCell,
             columns: columns,
             rows: rows,

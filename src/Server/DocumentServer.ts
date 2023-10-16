@@ -95,6 +95,7 @@ app.put('/documents/:name', (req: express.Request, res: express.Response) => {
 
     // get the document
     const document = documentHolder.getDocumentJSON(name, userName);
+    console.log("document from PUT", document);//cellsBeingEdited is empty
 
     res.status(200).send(document);
 });

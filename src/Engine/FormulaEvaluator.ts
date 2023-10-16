@@ -158,8 +158,9 @@ export class FormulaEvaluator {
     */
   private advancedMathOperations(): number {
     let result = this.factor();
-    if (this._currentFormula.length > 0) {
+    while (this._currentFormula.length > 0) {
       let nextToken = this._currentFormula[0];
+      let operationHandled = true;
       switch (nextToken) {
         case "x^2":
           this._currentFormula.shift();
@@ -251,8 +252,10 @@ export class FormulaEvaluator {
           }
           break;
         default:
+          operationHandled = false;
           break;
       } 
+      if (!operationHandled) break;
     }
     return result;
   }
@@ -275,6 +278,11 @@ export class FormulaEvaluator {
 
     // get the first token in the formula
     let token = this._currentFormula.shift();
+    
+    if (token === "Rand") {
+      this._currentFormula.unshift(token);
+      return result;
+    }
 
     // if the token is a number set the result to the number
     // and set the lastResult to the number
@@ -358,8 +366,6 @@ export class FormulaEvaluator {
     return [value, ""];
 
   }
-
-
 }
 
 export default FormulaEvaluator;

@@ -156,6 +156,13 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           className="button-operator"
           dataTestId="divide-button"
         />
+        <Button
+          text={ ButtonNames.empty}
+          isDigit={false}
+          onClick={() => { }}
+          className="button-control"
+          dataTestId="empty-button"
+        />
       </div>
 
       <div className="buttons-row">
@@ -215,6 +222,13 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           className="button-operator"
           dataTestId="subtract-button"
         />
+        <Button
+          text={ ButtonNames.empty}
+          isDigit={false}
+          onClick={() => { }}
+          className="button-control"
+          dataTestId="empty-button"
+        />
       </div>
 
       <div className="buttons-row">
@@ -273,6 +287,13 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           onClick={() => onCommandButtonClick(ButtonNames.edit_toggle)}
           className={(getDoneButtonClass())}
           dataTestId="edit-toggle-button"
+        />
+        <Button
+          text={ ButtonNames.empty}
+          isDigit={false}
+          onClick={() => { }}
+          className="button-control"
+          dataTestId="empty-button"
         />
       </div>
 

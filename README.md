@@ -3,7 +3,7 @@
  - [Discovery.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/Discovery.md)
  - [TeamEvaluation.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/TeamEvaluation.md)
  - [PostMortem.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/PostMortem.md)
- - [Part0 Diagram]() link to image or lucichart
+ - [Part0 Diagram](https://lucid.app/lucidchart/b7b3ac78-be59-46a9-92c9-d4d860bf4ea8/edit?viewport_loc=388%2C610%2C2439%2C1010%2C0_0&invitationId=inv_794a3221-40ca-490f-b1f7-7a4b3a8c6437)
 
 # Getting Started with Create React App
 

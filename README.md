@@ -1,3 +1,10 @@
+ This project was a assignment for CS5500 course, check the [AssignmentBrief.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/AssignmentBrief.md) to get more information
+
+ - [Discovery.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/Discovery.md)
+ - [TeamEvaluation.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/TeamEvaluation.md)
+ - [PostMortem.md](https://github.com/AnnabelleAB/CS5500-Ast2/blob/main/PostMortem.md)
+ - [Part0 Diagram]() link to image or lucichart
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

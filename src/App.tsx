@@ -9,11 +9,13 @@ import {
 } from "react-router-dom";
 import SpreadSheet from './Components/SpreadSheet';
 import FileSelector from './Components/FileSelector';
+import Header from './Components/Header';
 
 const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
+      <Header/>
         <header className="App-main">
           <Routes>
             <Route path="/" element={<FileSelectorWrapper />} />

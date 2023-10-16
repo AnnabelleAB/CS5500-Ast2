@@ -9,8 +9,8 @@ const FileSelector: React.FC = () => {
 
     const linkStyle = {
         margin: "1rem",
-        // textDecoration: "none",
-        color: 'rgb(214, 225, 156)'
+        color: 'rgb(214, 225, 156)',
+        fontSize: '20px',
       };
 
     useEffect(() => {
@@ -34,7 +34,7 @@ const FileSelector: React.FC = () => {
 
     return (
         <div>
-            <h1>Select a Document</h1>
+            <h3>Select a Document</h3>
             <ul className='link'>
                 {documents.map(doc => <li key={doc}><Link to={`/${doc}`} style={linkStyle}>{doc}</Link></li>)}
             </ul>

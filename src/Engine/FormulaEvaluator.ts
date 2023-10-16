@@ -12,7 +12,7 @@ export class FormulaEvaluator {
   private _lastResult: number = 0;
   private _sheetMemory: SheetMemory;
   private _result: number = 0;
-
+  
 
   constructor(memory: SheetMemory) {
     this._sheetMemory = memory;
@@ -158,14 +158,15 @@ export class FormulaEvaluator {
     */
   private advancedMathOperations(): number {
     let result = this.factor();
-    if (this._currentFormula.length > 0) {
+    while (this._currentFormula.length > 0) {
       let nextToken = this._currentFormula[0];
+      let operationHandled = true;
       switch (nextToken) {
-        case "x^2":
+        case "sqr":
           this._currentFormula.shift();
           result = Math.pow(result, 2);
           break;
-        case "x^3":
+        case "cube":
           this._currentFormula.shift();
           result = Math.pow(result, 3);
           break;
@@ -180,7 +181,7 @@ export class FormulaEvaluator {
             result = 1 / result;
           }
           break;
-        case "x^(1/2)":
+        case "sqrt":
           if (result < 0) {
             this._errorOccured = true;
             this._errorMessage = ErrorMessages.negativeRoot;
@@ -191,7 +192,7 @@ export class FormulaEvaluator {
             result = Math.sqrt(result);
           }
           break;
-        case "x^(1/3)":
+        case "cuberoot":
           this._currentFormula.shift();
           result = Math.cbrt(result);
           break;
@@ -214,7 +215,7 @@ export class FormulaEvaluator {
             result = Math.tan(result);
           }
           break;
-        case "sin^-1":
+        case "asin":
           this._currentFormula.shift();
           if (result < -1 || result > 1) {
             this._errorOccured = true;
@@ -224,7 +225,7 @@ export class FormulaEvaluator {
           }
           result = Math.asin(result);
           break;
-        case "cos^-1":
+        case "acos":
           this._currentFormula.shift();
           if (result < -1 || result > 1) {
             this._errorOccured = true;
@@ -234,7 +235,7 @@ export class FormulaEvaluator {
           }
           result = Math.acos(result);
           break;
-        case "tan^-1":
+        case "atan":
           this._currentFormula.shift();
           result = Math.atan(result);
           break;
@@ -251,8 +252,10 @@ export class FormulaEvaluator {
           }
           break;
         default:
+          operationHandled = false;
           break;
       } 
+      if (!operationHandled) break;
     }
     return result;
   }
@@ -276,6 +279,11 @@ export class FormulaEvaluator {
     // get the first token in the formula
     let token = this._currentFormula.shift();
 
+    if (token === "Rand") {
+      this._currentFormula.unshift(token);
+      return result;
+    }
+    
     // if the token is a number set the result to the number
     // and set the lastResult to the number
     if (this.isNumber(token)) {
@@ -300,8 +308,7 @@ export class FormulaEvaluator {
         this._errorOccured = true;
         this._lastResult = result;
       }
-
-      // otherwise set the errorOccured flag to true  
+    // otherwise set the errorOccured flag to true  
     } else {
       this._errorOccured = true;
       this._errorMessage = ErrorMessages.invalidFormula;

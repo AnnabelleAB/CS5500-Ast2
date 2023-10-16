@@ -19,6 +19,9 @@ export const ButtonNames = {
   done: "=",
   allClear: "AC",
   clear: "C",
+  negative: "+/-",
+  random: "Rand",
+  
 }
 
 

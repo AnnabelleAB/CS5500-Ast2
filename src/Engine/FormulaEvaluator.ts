@@ -161,11 +161,11 @@ export class FormulaEvaluator {
     if (this._currentFormula.length > 0) {
       let nextToken = this._currentFormula[0];
       switch (nextToken) {
-        case "x^2":
+        case "sqr":
           this._currentFormula.shift();
           result = Math.pow(result, 2);
           break;
-        case "x^3":
+        case "cube":
           this._currentFormula.shift();
           result = Math.pow(result, 3);
           break;
@@ -180,7 +180,7 @@ export class FormulaEvaluator {
             result = 1 / result;
           }
           break;
-        case "x^(1/2)":
+        case "sqrt":
           if (result < 0) {
             this._errorOccured = true;
             this._errorMessage = ErrorMessages.negativeRoot;
@@ -191,7 +191,7 @@ export class FormulaEvaluator {
             result = Math.sqrt(result);
           }
           break;
-        case "x^(1/3)":
+        case "cuberoot":
           this._currentFormula.shift();
           result = Math.cbrt(result);
           break;
@@ -214,7 +214,7 @@ export class FormulaEvaluator {
             result = Math.tan(result);
           }
           break;
-        case "sin^-1":
+        case "asin":
           this._currentFormula.shift();
           if (result < -1 || result > 1) {
             this._errorOccured = true;
@@ -224,7 +224,7 @@ export class FormulaEvaluator {
           }
           result = Math.asin(result);
           break;
-        case "cos^-1":
+        case "acos":
           this._currentFormula.shift();
           if (result < -1 || result > 1) {
             this._errorOccured = true;
@@ -234,7 +234,7 @@ export class FormulaEvaluator {
           }
           result = Math.acos(result);
           break;
-        case "tan^-1":
+        case "atan":
           this._currentFormula.shift();
           result = Math.atan(result);
           break;

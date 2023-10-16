@@ -327,7 +327,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is 5^2", () => {
       it("returns the number", () => {
-        const formula = ["5", "x^2"];
+        const formula = ["5", "sqr"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -340,7 +340,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is 0^2", () => {
       it("returns the number", () => {
-        const formula = ["0", "x^2"];
+        const formula = ["0", "sqr"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -353,7 +353,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is -1^2", () => {
       it("returns the number", () => {
-        const formula = ["-1", "x^2"];
+        const formula = ["-1", "sqr"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -366,7 +366,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is 0^3", () => {
       it("returns the number", () => {
-        const formula = ["0", "x^3"];
+        const formula = ["0", "cube"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -379,7 +379,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is 3^3", () => {
       it("returns the number", () => {
-        const formula = ["3", "x^3"];
+        const formula = ["3", "cube"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -392,7 +392,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is -2^3", () => {
       it("returns the number", () => {
-        const formula = ["-2", "x^3"];
+        const formula = ["-2", "cube"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -470,7 +470,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is 4^(1/2)", () => {
       it("returns the number", () => {
-        const formula = ["4", "x^(1/2)"];
+        const formula = ["4", "sqrt"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -483,7 +483,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is -4^(1/2)", () => {
       it("returns the number", () => {
-        const formula = ["-4", "x^(1/2)"];
+        const formula = ["-4", "sqrt"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -496,7 +496,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is 0^(1/2)", () => {
       it("returns the number", () => {
-        const formula = ["0", "x^(1/2)"];
+        const formula = ["0", "sqrt"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -509,7 +509,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is 27^(1/3)", () => {
       it("returns the number", () => {
-        const formula = ["27", "x^(1/3)"];
+        const formula = ["27", "cuberoot"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -522,7 +522,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is 0^(1/3)", () => {
       it("returns the number", () => {
-        const formula = ["0", "x^(1/3)"];
+        const formula = ["0", "cuberoot"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -535,7 +535,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is -27^(1/3)", () => {
       it("returns the number", () => {
-        const formula = ["-27", "x^(1/3)"];
+        const formula = ["-27", "cuberoot"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -663,9 +663,9 @@ describe("FormulaEvaluator", () => {
       });
     });    
 
-    describe("when the formula is sin^(-1)(0)", () => {
+    describe("when the formula is asin(0)", () => {
       it("returns the number", () => {
-        const formula = ["0", "sin^-1"];
+        const formula = ["0", "asin"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -676,9 +676,9 @@ describe("FormulaEvaluator", () => {
       });
     });     
 
-    describe("when the formula is sin^(-1)(2)", () => {
+    describe("when the formula is asin(2)", () => {
       it("returns the number", () => {
-        const formula = ["2", "sin^-1"];
+        const formula = ["2", "asin"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -689,9 +689,9 @@ describe("FormulaEvaluator", () => {
       });
     });     
 
-    describe("when the formula is cos^(-1)(2)", () => {
+    describe("when the formula is acos(2)", () => {
       it("returns the number", () => {
-        const formula = ["2", "cos^-1"];
+        const formula = ["2", "acos"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -702,9 +702,9 @@ describe("FormulaEvaluator", () => {
       });
     });     
 
-    describe("when the formula is cos^(-1)(0) * 10", () => {
+    describe("when the formula is acos(0) * 10", () => {
       it("returns the number", () => {
-        const formula = ["0", "cos^-1", "*", "10"];
+        const formula = ["0", "acos", "*", "10"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -717,7 +717,7 @@ describe("FormulaEvaluator", () => {
 
     describe("when the formula is (tan^(-1)(1) - 5) / 2", () => {
       it("returns the number", () => {
-        const formula = ["(", "1", "tan^-1", "-", "5", ")", "/", "2"];
+        const formula = ["(", "1", "atan", "-", "5", ")", "/", "2"];
         recalc.evaluate(formula);
 
         let result = recalc.result;
@@ -765,7 +765,216 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(6);
         expect(error).toEqual("");
       });
-    });     
+    });
+
+    //Unit test from instructor
+    describe("when the formula is 1 '+/-' ", () => {
+      it("returns the number", () => {
+      const formula = ["1", "+/-"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(result).toEqual(-1);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is 3.14159265358979323 cos' ", () => {
+      it("returns the numbe 0", () => {
+      const formula = ["3.14159265358979323", "cos"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(result).toEqual(-1);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is 3.14159265358979323 sin' ", () => {
+      it("returns the numbe 0", () => {
+      const formula = ["3.14159265358979323", "sin"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(Math.abs(result)).toBeLessThan(0.000000000000001);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is (3.14159265358979323 / 4) tan' ", () => {
+      it("returns the numbe 0", () => {
+      const formula = ["(", "3.14159265358979323", "/", "4", ")", "tan"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      let delta = Math.abs(result - 1);
+      expect(delta).toBeLessThan(0.000000000000001);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is 1 asin' ", () => {
+      it("returns the number PI/2", () => {
+      const formula = ["1", "asin"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(result).toEqual(1.5707963267948966);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is 1 acos' ", () => {
+      it("returns the numbe 0", () => {
+      const formula = ["1", "acos"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(result).toEqual(0);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is 1 atan' ", () => {
+      it("returns the number PI/4", () => {
+      const formula = ["1", "atan"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(result).toEqual(0.7853981633974483);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is 4 sqrt' ", () => {
+      it("returns the number 2", () => {
+      const formula = ["4", "sqrt"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(result).toEqual(2);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is 8 cuberoot' ", () => {
+      it("returns the number 2", () => {
+      const formula = ["8", "cuberoot"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(result).toEqual(2);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is 4 sqr' ", () => {
+      it("returns the number 16", () => {
+      const formula = ["4", "sqr"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(result).toEqual(16);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is 4 cube' ", () => {
+      it("returns the number 64", () => {
+      const formula = ["4", "cube"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(result).toEqual(64);
+      expect(error).toEqual("");
+      });
+      });
+      
+      describe("when the formula is 4 1/x' ", () => {
+      it("returns the number 0.25", () => {
+      const formula = ["4", "1/x"];
+      
+      recalc.evaluate(formula);
+      
+      let result = recalc.result;
+      let error = recalc.error;
+      
+      expect(result).toEqual(0.25);
+      expect(error).toEqual("");
+      });
+      });
+    
+      describe("when the formula is 2 1/x sqr 1/x' ", () => {
+
+        it("returns the number 0.25", () => {
+        
+        const formula = ["2", "1/x", "sqr", "1/x"];
+        
+        recalc.evaluate(formula);
+        
+        let result = recalc.result;
+        
+        let error = recalc.error;
+        
+        expect(result).toEqual(4);
+        
+        expect(error).toEqual("");
+        
+         });
+        
+         });
+        
+        describe("when the formula is ( 1 + 1 ) sqr sqr sqr' ", () => {
+        
+        it("returns the number 0.25", () => {
+        
+        const formula = ["(", "1", "+", "1", ")", "sqr", "sqr", "sqr"];
+        
+        recalc.evaluate(formula);
+        
+        let result = recalc.result;
+        
+        let error = recalc.error;
+        
+        expect(result).toEqual(256);
+        
+        expect(error).toEqual("");
+        
+         });
+        
+         });
 
   });
 });

@@ -325,7 +325,7 @@ describe("FormulaEvaluator", () => {
     });
 
 
-    describe("when the formula is 5^2", () => {
+    describe("when the formula is 5 sqr", () => {
       it("returns the number", () => {
         const formula = ["5", "sqr"];
         recalc.evaluate(formula);
@@ -338,7 +338,7 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is 0^2", () => {
+    describe("when the formula is 0 sqr", () => {
       it("returns the number", () => {
         const formula = ["0", "sqr"];
         recalc.evaluate(formula);
@@ -351,7 +351,20 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is -1^2", () => {
+    describe("when the formula is 1 + 2 sqr", () => {
+      it("returns the number", () => {
+        const formula = ["1", "+", "2", "sqr"];
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(5);
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is -1 sqr", () => {
       it("returns the number", () => {
         const formula = ["-1", "sqr"];
         recalc.evaluate(formula);
@@ -364,7 +377,7 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is 0^3", () => {
+    describe("when the formula is 0 cube", () => {
       it("returns the number", () => {
         const formula = ["0", "cube"];
         recalc.evaluate(formula);
@@ -377,7 +390,7 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is 3^3", () => {
+    describe("when the formula is 3 cube", () => {
       it("returns the number", () => {
         const formula = ["3", "cube"];
         recalc.evaluate(formula);
@@ -390,7 +403,7 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is -2^3", () => {
+    describe("when the formula is -2 cube", () => {
       it("returns the number", () => {
         const formula = ["-2", "cube"];
         recalc.evaluate(formula);
@@ -468,7 +481,7 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is 4^(1/2)", () => {
+    describe("when the formula is 4 sqrt", () => {
       it("returns the number", () => {
         const formula = ["4", "sqrt"];
         recalc.evaluate(formula);
@@ -481,7 +494,22 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is -4^(1/2)", () => {
+    describe("when the formula is 1 + 4 sqrt", () => {
+      it("returns the number", () => {
+        const formula = ["1", "+", "4", "sqrt"];
+        recalc.evaluate(formula);
+
+        let result = recalc.result;
+        let error = recalc.error;
+
+        expect(result).toEqual(3);
+        expect(error).toEqual("");
+      });
+    });
+
+
+
+    describe("when the formula is -4 sqrt", () => {
       it("returns the number", () => {
         const formula = ["-4", "sqrt"];
         recalc.evaluate(formula);
@@ -494,7 +522,7 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is 0^(1/2)", () => {
+    describe("when the formula is 0 sqrt", () => {
       it("returns the number", () => {
         const formula = ["0", "sqrt"];
         recalc.evaluate(formula);
@@ -507,7 +535,7 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is 27^(1/3)", () => {
+    describe("when the formula is 27 cuberoot", () => {
       it("returns the number", () => {
         const formula = ["27", "cuberoot"];
         recalc.evaluate(formula);
@@ -520,7 +548,7 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is 0^(1/3)", () => {
+    describe("when the formula is 0 cuberoot", () => {
       it("returns the number", () => {
         const formula = ["0", "cuberoot"];
         recalc.evaluate(formula);
@@ -533,7 +561,7 @@ describe("FormulaEvaluator", () => {
       });
     });
 
-    describe("when the formula is -27^(1/3)", () => {
+    describe("when the formula is -27 cuberoot", () => {
       it("returns the number", () => {
         const formula = ["-27", "cuberoot"];
         recalc.evaluate(formula);
@@ -635,7 +663,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(Math.tan(0) + 1);
         expect(error).toEqual("");
       });
-    });    
+    });
 
     describe("when the formula is (tan(0) * 3) + 2", () => {
       it("returns the number", () => {
@@ -648,7 +676,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual((Math.tan(0) * 3) + 2);
         expect(error).toEqual("");
       });
-    });    
+    });
 
     describe("when the formula is tan(90)", () => {
       it("returns the number", () => {
@@ -661,7 +689,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(NaN);
         expect(error).toEqual(ErrorMessages.invalidNumber);
       });
-    });    
+    });
 
     describe("when the formula is asin(0)", () => {
       it("returns the number", () => {
@@ -674,7 +702,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(0);
         expect(error).toEqual("");
       });
-    });     
+    });
 
     describe("when the formula is asin(2)", () => {
       it("returns the number", () => {
@@ -687,7 +715,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(NaN);
         expect(error).toEqual(ErrorMessages.outOfRange);
       });
-    });     
+    });
 
     describe("when the formula is acos(2)", () => {
       it("returns the number", () => {
@@ -700,7 +728,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(NaN);
         expect(error).toEqual(ErrorMessages.outOfRange);
       });
-    });     
+    });
 
     describe("when the formula is acos(0) * 10", () => {
       it("returns the number", () => {
@@ -713,9 +741,9 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(Math.acos(0) * 10);
         expect(error).toEqual("");
       });
-    });     
+    });
 
-    describe("when the formula is (tan^(-1)(1) - 5) / 2", () => {
+    describe("when the formula is (atan(1) - 5) / 2", () => {
       it("returns the number", () => {
         const formula = ["(", "1", "atan", "-", "5", ")", "/", "2"];
         recalc.evaluate(formula);
@@ -726,7 +754,7 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual((Math.atan(1) - 5) / 2);
         expect(error).toEqual("");
       });
-    });     
+    });
 
     describe("when the formula is +/- 3", () => {
       it("returns the number", () => {
@@ -739,9 +767,9 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(-3);
         expect(error).toEqual("");
       });
-    });     
+    });
 
-    describe("when the formula is +/- 0", () => {
+    describe("when the formula is 0 +/-", () => {
       it("returns the number", () => {
         const formula = ["0", "+/-"];
         recalc.evaluate(formula);
@@ -752,9 +780,9 @@ describe("FormulaEvaluator", () => {
         expect(result).toEqual(0);
         expect(error).toEqual("");
       });
-    });     
+    });
 
-    describe("when the formula is +/- -3 + 3", () => {
+    describe("when the formula is -3 +/- + 3", () => {
       it("returns the number", () => {
         const formula = ["-3", "+/-", "+", "3"];
         recalc.evaluate(formula);
@@ -763,6 +791,51 @@ describe("FormulaEvaluator", () => {
         let error = recalc.error;
 
         expect(result).toEqual(6);
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is '2 Rand'", () => {
+      it("returns a random number between 0 and 1 (inclusive)", () => {
+        const formula = ["Rand"];
+        recalc.evaluate(formula);
+
+        const result = recalc.result;
+        const error = recalc.error;
+
+        expect(result).toBeGreaterThanOrEqual(0);
+        expect(result).toBeLessThanOrEqual(1);
+
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is 'Rand'", () => {
+      it("returns a random number between 0 and 1 (inclusive)", () => {
+        const formula = ["Rand"];
+        recalc.evaluate(formula);
+
+        const result = recalc.result;
+        const error = recalc.error;
+
+        expect(result).toBeGreaterThanOrEqual(0);
+        expect(result).toBeLessThanOrEqual(1);
+
+        expect(error).toEqual("");
+      });
+    });
+
+    describe("when the formula is '1 Rand + 5'", () => {
+      it("returns a random number between 0 and 1 (inclusive)", () => {
+        const formula = ["Rand"];
+        recalc.evaluate(formula);
+
+        const result = recalc.result;
+        const error = recalc.error;
+
+        expect(result).toBeGreaterThanOrEqual(0);
+        expect(result).toBeLessThanOrEqual(6);
+
         expect(error).toEqual("");
       });
     });

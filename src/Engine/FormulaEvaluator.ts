@@ -278,6 +278,11 @@ export class FormulaEvaluator {
 
     // get the first token in the formula
     let token = this._currentFormula.shift();
+    
+    if (token === "Rand") {
+      this._currentFormula.unshift(token);
+      return result;
+    }
 
     if (token === "Rand") {
       this._currentFormula.unshift(token);
@@ -365,8 +370,6 @@ export class FormulaEvaluator {
     return [value, ""];
 
   }
-
-
 }
 
 export default FormulaEvaluator;

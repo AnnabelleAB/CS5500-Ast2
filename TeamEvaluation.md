@@ -26,3 +26,4 @@ Team work documentation: Documentation of what each team member did. Their git c
 3. 10/04/2023 write Discovery file for part0
 4. 10/05/2023 add a little UI style for part1 select file 
 4. 10/12/2023 finish part0, modify layout of page
+ - [Part0 Diagram](https://lucid.app/lucidchart/b7b3ac78-be59-46a9-92c9-d4d860bf4ea8/edit?viewport_loc=388%2C610%2C2439%2C1010%2C0_0&invitationId=inv_794a3221-40ca-490f-b1f7-7a4b3a8c6437)

@@ -142,7 +142,10 @@ export class DocumentHolder {
         // get the json string for the controler
         const documentContainer = document!.documentContainer(userName);
         // convert to JSON
+        // console.log to confirm that cellsBeingEdited is included in documents
+        // console.log("documentContainer",documentContainer)
         const documentJSON = JSON.stringify(documentContainer);
+        // console.log("documentJSON", documentJSON)
         return documentJSON;
 
 

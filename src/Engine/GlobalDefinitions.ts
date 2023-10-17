@@ -38,6 +38,11 @@ export interface CellTransport {
 export interface CellTransportMap {
   [key: string]: CellTransport;
 }
+
+export interface CellsBeingEditedMap{
+  [key: string]: string;
+}
+
 export interface DocumentTransport {
   columns: number;
   rows: number;
@@ -46,5 +51,6 @@ export interface DocumentTransport {
   result: string;
   currentCell: string;
   isEditing: boolean;
+  cellsBeingEdited: Map<string, string>;
 }
 

@@ -8,10 +8,11 @@
  * getDocument(name: string, user: string): Promise<Document>
  */
 
-import { DocumentTransport, CellTransport, CellTransportMap, ErrorMessages } from '../Engine/GlobalDefinitions';
+import { DocumentTransport, CellTransport, CellTransportMap, ErrorMessages,CellsBeingEditedMap } from '../Engine/GlobalDefinitions';
 import { Cell } from '../Engine/Cell';
 
 import { PortsGlobal, LOCAL_SERVER_URL, RENDER_SERVER_URL } from '../ServerDataDefinitions';
+import { useRoutes } from 'react-router-dom';
 
 
 
@@ -52,6 +53,8 @@ class SpreadSheetClient {
             currentCell: 'A1',
             isEditing: false,
             cells: new Map<string, CellTransport>(),
+            // for blank document, cells being edited is a empty map
+            cellsBeingEdited: new Map<string, string>() 
         };
         for (let row = 0; row < document.rows; row++) {
             for (let column = 0; column < document.columns; column++) {
@@ -152,6 +155,8 @@ class SpreadSheetClient {
         const columns = this._document.columns;
         const rows = this._document.rows;
         const cells: Map<string, CellTransport> = this._document.cells as Map<string, CellTransport>;
+        //Attention: cellsBeingEdited should be included in the sheetDisplayStrings
+        const cellsBeingEdited: Map<string, string> = this._document.cellsBeingEdited as Map<string, string>;
         const sheetDisplayStrings: string[][] = [];
         // create a 2d array of strings that is [row][column]
 
@@ -379,9 +384,12 @@ class SpreadSheetClient {
             rows: rows,
             isEditing: isEditing,
             cells: new Map<string, CellTransport>(),
+            cellsBeingEdited: new Map<string, string>() 
         };
         // create the cells
         const cells = document.cells as unknown as CellTransportMap;
+        //create the cellsBeingEdited
+        const cellsBeingEdited = document.cellsBeingEdited as unknown as CellsBeingEditedMap;
 
         for (let cellName in cells) {
 
@@ -395,6 +403,13 @@ class SpreadSheetClient {
             this._document!.cells.set(cellName, cell);
         }
 
+        //convert object of cellsBeingEdited to map<cellLabel,user>
+        for(let cellLabel in cellsBeingEdited){
+            let user = cellsBeingEdited[cellLabel];
+            this._document!.cellsBeingEdited.set(cellLabel, user);
+        }
+        // test that cellsBeingEdited is converted to map in frontEnd -> success
+        // console.log("this._document!.cellsBeingEdited",this._document!.cellsBeingEdited)
     }
 
     /**

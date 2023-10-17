@@ -43,7 +43,21 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing }:
     }
     return "cell";
   }
+  
+  // console.log("SheetComponent: cellsValues: ", cellsValues)
+  
+  function getCellValue(cell: string) {
+    const cellValue = cell.split("|")[0];
+    if (cellValue === "") {
+      return "";
+    }
+    return parseInt(cellValue);
+  }
 
+  function getCellEditor(cell: string) {
+    return cell.split("|")[1];
+  }
+  
   return (
     <table className="table">
       <tbody>
@@ -68,7 +82,9 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing }:
                   data-testid={Cell.columnRowToCell(colIndex, rowIndex)}
                   className={(getCellClass(Cell.columnRowToCell(colIndex, rowIndex)))}
                 >
-                  {cell}
+                  {/* {cell} */}
+                  {getCellValue(cell)}
+                  <label className="cell-label">{getCellEditor(cell)}</label>
                 </button>
 
               </td>

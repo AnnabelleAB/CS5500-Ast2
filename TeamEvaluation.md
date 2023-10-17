@@ -3,7 +3,7 @@ Team work documentation: Documentation of what each team member did. Their git c
 - **Group**: NotNull
 - **Members**:
   - 🧙🏻‍♀️ Cuiting Huang <huang.cui@northeastern.edu>
-  - 🧙‍♂️ Xilan Wu <wu.xiaol@northeastern.edu>
+  - 🧙‍♂️ Yu Sun <sun.yu2@northeastern.edu>
   - 🧙🏻‍♀️ Yichao Wu <wu.yicha@northeastern.edu>
   - 🧙🏻‍♀️ Yichao Wu <wu.yicha@northeastern.edu>
   - 🧙🏻‍♀️ Yichao Wu <wu.yicha@northeastern.edu>
@@ -16,6 +16,9 @@ Team work documentation: Documentation of what each team member did. Their git c
 ## MEMBER CONTRIBUTIONS (Update & Progress)
 
 ### Yu Sun
+1. 10/15/2023 complete the backend of Part3 task
+2. 10/16/2023 complete the frontend of Part3 task
+3. Talk about Part0 task
 ### Yiyi Wang
 ### Annabelle Sun
 1. 10/05/2023 Write Discovery File and complete Part1 task

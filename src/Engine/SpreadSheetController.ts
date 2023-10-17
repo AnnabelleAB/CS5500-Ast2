@@ -334,6 +334,9 @@ export class SpreadSheetController {
     container.formula = this.getFormulaStringForUser(user);
     container.result = this.getResultStringForUser(user);
     container.isEditing = userData.isEditing;
+    // add cells being edited information to the document that server send to client
+    // convert the map to object with string keys
+    container.cellsBeingEdited = Object.fromEntries(this._cellsBeingEdited);
     return container;
   }
 

@@ -52,6 +52,7 @@ class SpreadSheetClient {
             currentCell: 'A1',
             isEditing: false,
             cells: new Map<string, CellTransport>(),
+            cellsBeingEdited: {}
         };
         for (let row = 0; row < document.rows; row++) {
             for (let column = 0; column < document.columns; column++) {
@@ -60,6 +61,7 @@ class SpreadSheetClient {
                     formula: [],
                     value: 0,
                     error: ErrorMessages.emptyFormula,
+                    editingBy: ''
                 };
                 document.cells.set(cellName, cell);
             }
@@ -163,7 +165,7 @@ class SpreadSheetClient {
                 const cellName = Cell.columnRowToCell(column, row)!;
                 const cell = cells.get(cellName) as CellTransport;
                 if (cell) {
-                    sheetDisplayStrings[row][column] = this._getCellValue(cell);
+                    sheetDisplayStrings[row][column] = this._getCellValue(cell) + '|' + cell.editingBy;
                 } else {
                     sheetDisplayStrings[row][column] = 'xxx';
                 }
@@ -366,7 +368,11 @@ class SpreadSheetClient {
         const columns = document.columns;
         const rows = document.rows;
         const isEditing = document.isEditing;
-
+        // show the document sent from the server
+        // console.log("update document", document) --> correct
+        // cellsBeingEdited: 
+        // A1: "1111"
+        // B1: "2222222"
 
 
         // create the document
@@ -379,6 +385,7 @@ class SpreadSheetClient {
             rows: rows,
             isEditing: isEditing,
             cells: new Map<string, CellTransport>(),
+            cellsBeingEdited: document.cellsBeingEdited
         };
         // create the cells
         const cells = document.cells as unknown as CellTransportMap;
@@ -391,9 +398,11 @@ class SpreadSheetClient {
                 formula: cellTransport.formula,
                 value: cellTransport.value,
                 error: cellTransport.error,
+                editingBy: document.cellsBeingEdited[cellName] ?? ''
             };
             this._document!.cells.set(cellName, cell);
         }
+        // console.log("this._document!.cells", this._document!.cells)
 
     }
 

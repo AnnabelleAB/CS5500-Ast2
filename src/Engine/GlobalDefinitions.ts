@@ -33,6 +33,7 @@ export interface CellTransport {
   formula: string[];
   value: number;
   error: string;
+  editingBy: string;
 }
 
 export interface CellTransportMap {
@@ -46,5 +47,6 @@ export interface DocumentTransport {
   result: string;
   currentCell: string;
   isEditing: boolean;
+  cellsBeingEdited: {[key: string]: string}
 }
 

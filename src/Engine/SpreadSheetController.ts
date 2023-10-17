@@ -336,7 +336,20 @@ export class SpreadSheetController {
     container.isEditing = userData.isEditing;
     // add cells being edited information to the document that server send to client
     // convert the map to object with string keys
-    container.cellsBeingEdited = Object.fromEntries(this._cellsBeingEdited);
+    // container.cellsBeingEdited = Object.fromEntries(this._cellsBeingEdited);
+    // add contributingUsers rather than cellsBeingEdited since there is a bug in cellsBeingEdited
+    // use array to store contributingUsers
+    container.contributingUsers = [];
+    this._contributingUsers.forEach((value: ContributingUser, key: String) => {
+      let user = {
+        user: key,
+        cell: value.cellLabel,
+        isEditing: value.isEditing
+      }
+      if(value.isEditing){
+        container.contributingUsers.push(user);
+      }
+    })
     return container;
   }
 

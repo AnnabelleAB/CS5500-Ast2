@@ -14,12 +14,13 @@ interface SheetComponentProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   currentCell: string;
   currentlyEditing: boolean;
+  cellsBeingEdited: Map<string, string>;
 } // interface SheetComponentProps
 
 
 
 
-function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing }: SheetComponentProps) {
+function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing, cellsBeingEdited }: SheetComponentProps) {
 
   /**
    * 
@@ -48,6 +49,8 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing }:
     <table className="table">
       <tbody>
         {/*add a row with column cellsValues */}
+        {/*only for test here */}
+        {cellsBeingEdited}
         <tr>
           <th></th>
           {cellsValues[0].map((col, colIndex) => (

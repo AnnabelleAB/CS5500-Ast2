@@ -48,6 +48,7 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
     window.sessionStorage.getItem("userName") || ""
   );
   const [serverSelected, setServerSelected] = useState("localhost");
+  const [cellsBeingEdited, setCellsBeingEdited] = useState(spreadSheetClient.getCellsBeingEdited());
 
   function updateDisplayValues(): void {
     spreadSheetClient.userName = userName;
@@ -58,6 +59,7 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
     setCells(spreadSheetClient.getSheetDisplayStringsForGUI());
     setCurrentCell(spreadSheetClient.getWorkingCellLabel());
     setCurrentlyEditing(spreadSheetClient.getEditStatus());
+    setCellsBeingEdited(spreadSheetClient.getCellsBeingEdited());
   }
 
   // useEffect to refetch the data every 1/20 of a second
@@ -222,6 +224,7 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
             onClick={onCellClick}
             currentCell={currentCell}
             currentlyEditing={currentlyEditing}
+            cellsBeingEdited={cellsBeingEdited}
           ></SheetHolder>
         }
         <KeyPad

@@ -155,8 +155,6 @@ class SpreadSheetClient {
         const columns = this._document.columns;
         const rows = this._document.rows;
         const cells: Map<string, CellTransport> = this._document.cells as Map<string, CellTransport>;
-        //Attention: cellsBeingEdited should be included in the sheetDisplayStrings
-        const cellsBeingEdited: Map<string, string> = this._document.cellsBeingEdited as Map<string, string>;
         const sheetDisplayStrings: string[][] = [];
         // create a 2d array of strings that is [row][column]
 
@@ -174,7 +172,19 @@ class SpreadSheetClient {
                 }
             }
         }
+        // console.log("sheetDisplayStrings",sheetDisplayStrings)
         return sheetDisplayStrings;
+    }
+
+    /**
+     * the map for cells being edited including the current user
+     * @returns the map for cells being edited
+     */
+    public getCellsBeingEdited(): Map<string, string> {
+        if (!this._document) {
+            return new Map<string, string>();
+        }
+        return this._document.cellsBeingEdited;
     }
 
     public getEditStatusString(): string {

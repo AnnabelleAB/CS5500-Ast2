@@ -25,8 +25,9 @@ Team work documentation: Documentation of what each team member did. Their git c
 ### Weiyi Gao
 1. 10/05/2023 Write Discovery File
 2. 10/10/2023 Finish FormulaEvaluator and update corresponding unit tests of additional functionality
-3. 10/14/2023 Update new given unit tests in FormulaEvaluator.
+3. 10/14/2023 Update new given unit tests in FormulaEvaluator
 4. 10/15/2023 Update unit tests for Rand and fix formula evaluator to make post fix operators can be repeatedly
+5. Talk about part 0
 ### CuitingHuang
 1. 09/28/2023 Create timeline
 2. 09/29/2023 Start Working on Part0 

@@ -6,20 +6,26 @@ Team work documentation: Documentation of what each team member did. Their git c
   - 🧙‍♂️ Yu Sun <sun.yu2@northeastern.edu>
   - 🧙🏻‍♀️ Weiyi Gao <gao.weiy@northeastern.edu>
   - 🧙🏻‍♀️ Annabelle Sun <sun.huaq@northeastern.edu>
-  - 🧙🏻‍♀️ Yichao Wu <wu.yicha@northeastern.edu>
+  - 🧙🏻‍♀️ Yiyi Wang <wang.yiyi1@northeastern.edu>
 
 ## GitHub Handle:
 - How many hours did it take you to complete this assignment?
+  Each member spent differnt the amount of time on their own taks but generally 3 to 4 hours to complete the tasks for each member
 - Did you collaborate or share ideas with any other students/TAs/Professors?
+  We have confirmed our artifacts from part 0 with TA.
 - Did you use any external resources?
+  N/A
 
 ## MEMBER CONTRIBUTIONS (Update & Progress)
 
 ### Yu Sun
-1. 10/15/2023 complete the backend of Part3 task
-2. 10/16/2023 complete the frontend of Part3 task
+1. 10/15/2023 Complete the backend of Part3 task
+2. 10/16/2023 Complete the frontend of Part3 task
 3. Talk about Part0 task
 ### Yiyi Wang
+1. 10/14 Complete the frontend of Part2 task
+2. 10/14 Update the unit tests of Part2 task
+3. Talk about Part0 task
 ### Annabelle Sun
 1. 10/05/2023 Write Discovery File and complete Part1 task
 2. Talk about Part0 task

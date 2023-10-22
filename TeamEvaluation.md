@@ -5,7 +5,7 @@ Team work documentation: Documentation of what each team member did. Their git c
   - 🧙🏻‍♀️ Cuiting Huang <huang.cui@northeastern.edu>
   - 🧙‍♂️ Yu Sun <sun.yu2@northeastern.edu>
   - 🧙🏻‍♀️ Weiyi Gao <gao.weiy@northeastern.edu>
-  - 🧙🏻‍♀️ Yichao Wu <wu.yicha@northeastern.edu>
+  - 🧙🏻‍♀️ Annabelle Sun <sun.huaq@northeastern.edu>
   - 🧙🏻‍♀️ Yichao Wu <wu.yicha@northeastern.edu>
 
 ## GitHub Handle:
@@ -22,6 +22,7 @@ Team work documentation: Documentation of what each team member did. Their git c
 ### Yiyi Wang
 ### Annabelle Sun
 1. 10/05/2023 Write Discovery File and complete Part1 task
+2. Talk about Part0 task
 ### Weiyi Gao
 1. 10/05/2023 Write Discovery File
 2. 10/10/2023 Finish FormulaEvaluator and update corresponding unit tests of additional functionality

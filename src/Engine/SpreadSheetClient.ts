@@ -8,7 +8,7 @@
  * getDocument(name: string, user: string): Promise<Document>
  */
 
-import { DocumentTransport, CellTransport, CellTransportMap, ErrorMessages } from '../Engine/GlobalDefinitions';
+import { DocumentTransport, CellTransport, CellTransportMap, ErrorMessages, UserEditing } from '../Engine/GlobalDefinitions';
 import { Cell } from '../Engine/Cell';
 
 import { PortsGlobal, LOCAL_SERVER_URL, RENDER_SERVER_URL } from '../ServerDataDefinitions';
@@ -52,7 +52,8 @@ class SpreadSheetClient {
             currentCell: 'A1',
             isEditing: false,
             cells: new Map<string, CellTransport>(),
-            cellsBeingEdited: {}
+            // cellsBeingEdited: {}
+            contributingUsers: []
         };
         for (let row = 0; row < document.rows; row++) {
             for (let column = 0; column < document.columns; column++) {
@@ -360,6 +361,14 @@ class SpreadSheetClient {
 
     }
 
+    private _getEditorString(contributingUsers: UserEditing[], cellLabel: String): string{
+        for(let contributingUser of contributingUsers){
+            if(contributingUser.cell === cellLabel){
+                return contributingUser.user;
+            }
+        }
+        return '';
+    }
 
     private _updateDocument(document: DocumentTransport): void {
         const formula = document.formula;
@@ -385,7 +394,9 @@ class SpreadSheetClient {
             rows: rows,
             isEditing: isEditing,
             cells: new Map<string, CellTransport>(),
-            cellsBeingEdited: document.cellsBeingEdited
+            // cellsBeingEdited: document.cellsBeingEdited
+            contributingUsers: document.contributingUsers
+
         };
         // create the cells
         const cells = document.cells as unknown as CellTransportMap;
@@ -398,7 +409,8 @@ class SpreadSheetClient {
                 formula: cellTransport.formula,
                 value: cellTransport.value,
                 error: cellTransport.error,
-                editingBy: document.cellsBeingEdited[cellName] ?? ''
+                // editingBy: document.cellsBeingEdited[cellName] ?? ''
+                editingBy: this._getEditorString(document.contributingUsers, cellName)
             };
             this._document!.cells.set(cellName, cell);
         }

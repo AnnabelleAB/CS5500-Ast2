@@ -47,6 +47,12 @@ export interface DocumentTransport {
   result: string;
   currentCell: string;
   isEditing: boolean;
-  cellsBeingEdited: {[key: string]: string}
+  // cellsBeingEdited: {[key: string]: string}
+  contributingUsers: UserEditing[]
+}
+
+export interface UserEditing {
+  user: string;
+  cell: string;
 }
 
